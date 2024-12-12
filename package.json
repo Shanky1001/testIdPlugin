@@ -19,7 +19,7 @@
   },
   "name": "testidplugin",
   "description": "A Babel plugin to automatically inject `data-testid` attributes into JSX elements for testing purposes. This plugin works with React and TypeScript projects, ensuring that all relevant elements have unique and consistent `data-testid` attributes, making it easier to write tests with libraries like Jest, Testing Library, or Cypress.",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "main": "index.ts",
   "scripts": {
