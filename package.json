@@ -1,0 +1,36 @@
+{
+  "dependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "@babel/preset-typescript": "^7.26.0",
+    "@babel/traverse": "^7.26.4",
+    "@babel/types": "^7.26.3",
+    "@rollup/pluginutils": "^5.1.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2"
+  },
+  "name": "test",
+  "description": "A Babel plugin to automatically inject `data-testid` attributes into JSX elements for testing purposes. This plugin works with React and TypeScript projects, ensuring that all relevant elements have unique and consistent `data-testid` attributes, making it easier to write tests with libraries like Jest, Testing Library, or Cypress.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shanky1001/testIdPlugin.git"
+  },
+  "keywords": [
+    "babel",
+    "plugin",
+    "test-id",
+    "add"
+  ],
+  "author": "shashank rai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shanky1001/testIdPlugin/issues"
+  },
+  "homepage": "https://github.com/Shanky1001/testIdPlugin#readme"
+}
