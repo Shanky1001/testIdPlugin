@@ -38,45 +38,15 @@ export default function testIdPlugin({
   const filter = createFilter(include, exclude);
 
   return {
-    name: "babel-plugin-testid",
-    async transform(code: string, id: string) {
-      if (!id.endsWith(".jsx") && !id.endsWith(".tsx")) {
-        return null;
-      }
-      if (!filter(id)) {
-        return null;
-      }
-
-      const result = await babel.transformAsync(code, {
-        presets: [
-          [
-            "@babel/preset-react",
-            {
-              runtime: "automatic",
-            },
-          ],
-          "@babel/preset-typescript",
-        ],
-        plugins: [[injectTestIdPlugin(prefix)]],
-        sourceMaps: includeSourceMap,
-        filename: id,
-        sourceType: "module",
-      });
-
-      if (!result) return null;
-
-      return {
-        code: result.code || "",
-        map: result.map || undefined,
-      };
-    },
-  };
-}
-
-function injectTestIdPlugin(prefix: string): PluginObj {
-  return {
+    name: "testIdPlugin",
     visitor: {
-      JSXOpeningElement(path: NodePath<JSXOpeningElement>) {
+      JSXOpeningElement(path: NodePath<JSXOpeningElement>, state) {
+        const filePath = state.filename || state.file?.opts?.filename;
+
+        // If filePath is not available (in case of no state or no filename), return early
+        if (!filePath || !filter(filePath)) {
+          return; // Skip files that don't match the filter
+        }
         // Skip if `data-testid` already exists
         const hasTestId = path.node.attributes.some((attribute) => {
           if (attribute.type !== "JSXAttribute") return false;
@@ -114,6 +84,7 @@ function injectTestIdPlugin(prefix: string): PluginObj {
           elementName: convertedName,
           siblingIndex,
         });
+
         // Add `data-testid` attribute
         path.node.attributes.push({
           type: "JSXAttribute",

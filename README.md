@@ -164,13 +164,3 @@ npm publish
 ## License
 
 This plugin is open-source software, licensed under the [MIT License](LICENSE).
-
-### Explanation:
-
-- **Installation**: Provides the necessary commands to install the plugin using npm or yarn.
-- **Configuration**: Describes how to configure Babel to use the plugin with the proper options (`prefix`, `include`, `exclude`).
-- **How It Works**: Describes the main functionality of the plugin—injecting `data-testid` attributes.
-- **Example**: Provides an example of JSX code before and after transformation.
-- **Development**: Guides for developers who want to contribute to the plugin or build it locally.
-
-Let me know if you need further refinements!
